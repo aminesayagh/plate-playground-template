@@ -39,19 +39,22 @@ export function ModeDropdownMenu(props: DropdownMenuProps) {
     editing: (
       <>
         <Pen />
-        <span className="hidden lg:inline">Editing</span>
+        {/* <span className="hidden lg:inline">Editing</span> */}
+        <span className="inline">Editing</span>
       </>
     ),
     suggestion: (
       <>
         <PencilLineIcon />
-        <span className="hidden lg:inline">Suggestion</span>
+        {/* <span className="hidden lg:inline">Suggestion</span> */}
+        <span className="inline">Suggestion</span>
       </>
     ),
     viewing: (
       <>
         <Eye />
-        <span className="hidden lg:inline">Viewing</span>
+        {/* <span className="hidden lg:inline">Viewing</span> */}
+        <span className="inline">Viewing</span>
       </>
     ),
   };

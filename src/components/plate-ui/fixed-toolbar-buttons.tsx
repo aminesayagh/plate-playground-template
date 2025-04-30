@@ -15,10 +15,10 @@ import {
 } from '@udecode/plate-font/react';
 import { HighlightPlugin } from '@udecode/plate-highlight/react';
 import {
-  AudioPlugin,
-  FilePlugin,
+  // AudioPlugin,
+  // FilePlugin,
   ImagePlugin,
-  VideoPlugin,
+  // VideoPlugin,
 } from '@udecode/plate-media/react';
 import { useEditorReadOnly } from '@udecode/plate/react';
 import {
@@ -39,7 +39,7 @@ import { MoreDropdownMenu } from '@/components/plate-ui/more-dropdown-menu';
 import { AIToolbarButton } from './ai-toolbar-button';
 import { AlignDropdownMenu } from './align-dropdown-menu';
 import { ColorDropdownMenu } from './color-dropdown-menu';
-import { CommentToolbarButton } from './comment-toolbar-button';
+// import { CommentToolbarButton } from './comment-toolbar-button';
 import { EmojiDropdownMenu } from './emoji-dropdown-menu';
 import { ExportToolbarButton } from './export-toolbar-button';
 import { FontSizeToolbarButton } from './font-size-toolbar-button';
@@ -157,9 +157,9 @@ export function FixedToolbarButtons() {
 
           <ToolbarGroup>
             <MediaToolbarButton nodeType={ImagePlugin.key} />
-            <MediaToolbarButton nodeType={VideoPlugin.key} />
+            {/* <MediaToolbarButton nodeType={VideoPlugin.key} />
             <MediaToolbarButton nodeType={AudioPlugin.key} />
-            <MediaToolbarButton nodeType={FilePlugin.key} />
+            <MediaToolbarButton nodeType={FilePlugin.key} /> */}
           </ToolbarGroup>
 
           <ToolbarGroup>
@@ -180,7 +180,7 @@ export function FixedToolbarButtons() {
         <MarkToolbarButton nodeType={HighlightPlugin.key} tooltip="Highlight">
           <HighlighterIcon />
         </MarkToolbarButton>
-        <CommentToolbarButton />
+        {/* <CommentToolbarButton /> */}
       </ToolbarGroup>
 
       <ToolbarGroup>

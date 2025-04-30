@@ -20,7 +20,7 @@ import {
   LinkIcon,
 } from 'lucide-react';
 import { toast } from 'sonner';
-import { useFilePicker } from 'use-file-picker';
+// import { useFilePicker } from 'use-file-picker';
 
 import {
   AlertDialog,
@@ -93,19 +93,20 @@ export function MediaToolbarButton({
   const openState = useOpenState();
   const [dialogOpen, setDialogOpen] = useState(false);
 
-  const { openFilePicker } = useFilePicker({
-    accept: currentConfig.accept,
-    multiple: true,
-    onFilesSelected: ({ plainFiles: updatedFiles }) => {
-      (editor as any).tf.insert.media(updatedFiles);
-    },
-  });
+  // const { openFilePicker } = useFilePicker({
+  //   accept: currentConfig.accept,
+  //   multiple: true,
+  //   onFilesSelected: ({ plainFiles: updatedFiles }) => {
+  //     (editor as any).tf.insert.media(updatedFiles);
+  //   },
+  // });
 
   return (
     <>
       <ToolbarSplitButton
         onClick={() => {
-          openFilePicker();
+          // openFilePicker();
+          setDialogOpen(true)
         }}
         onKeyDown={(e) => {
           if (e.key === 'ArrowDown') {
@@ -130,10 +131,10 @@ export function MediaToolbarButton({
             alignOffset={-32}
           >
             <DropdownMenuGroup>
-              <DropdownMenuItem onSelect={() => openFilePicker()}>
+              {/* <DropdownMenuItem onSelect={() => openFilePicker()}>
                 {currentConfig.icon}
                 Upload from computer
-              </DropdownMenuItem>
+              </DropdownMenuItem> */}
               <DropdownMenuItem onSelect={() => setDialogOpen(true)}>
                 <LinkIcon />
                 Insert via URL

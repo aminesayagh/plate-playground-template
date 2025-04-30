@@ -17,8 +17,8 @@ async function getPackageJson() {
     const files = await fs.readFile(TARGET_PATH, 'utf8');
 
     return JSON.parse(files);
-  } catch (error) {
-    console.error('Error reading package.json:', error.message);
+  } catch (error: any) {
+    console.error('Error reading package.json:', error?.message);
 
     throw error;
   }
@@ -29,8 +29,8 @@ async function fetchPackageVersion(pkg: string) {
     const { stdout } = await execPromise(`npm view ${pkg} version`);
 
     return stdout.trim();
-  } catch (error) {
-    console.error(`Error fetching version for ${pkg}:`, error.message);
+  } catch (error: any) {
+    console.error(`Error fetching version for ${pkg}:`, error?.message);
 
     return null;
   }
@@ -122,15 +122,15 @@ async function main() {
 
         execSync('pnpm install', { stdio: 'inherit' });
         console.info('pnpm install completed successfully.');
-      } catch (error) {
-        console.error('Error running pnpm install:', error.message);
+      } catch (error: any) {
+        console.error('Error running pnpm install:', error?.message);
         process.exit(1);
       }
     } else {
       console.info('\nNo packages were updated.');
     }
-  } catch (error) {
-    console.error('Error updating packages:', error.message);
+  } catch (error: any) {
+    console.error('Error updating packages:', error?.message);
     process.exit(1);
   }
 }

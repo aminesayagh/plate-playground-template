@@ -50,3 +50,11 @@ pnpm dev
 ```
 
 Visit http://localhost:3000/editor to see the editor in action.
+
+
+# Notes:
+
+[] install tailwind-scrollbar-hide
+[] use template Editor
+[] update command api
+[] 

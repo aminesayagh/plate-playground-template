@@ -7,20 +7,30 @@ import { HTML5Backend } from 'react-dnd-html5-backend';
 import { Plate } from '@udecode/plate/react';
 
 import { useCreateEditor } from '@/components/editor/use-create-editor';
-import { SettingsDialog } from '@/components/editor/settings';
+// import { SettingsDialog } from '@/components/editor/settings';
 import { Editor, EditorContainer } from '@/components/plate-ui/editor';
+import { serializeEditorContent } from '@/lib/editor-content-parser';
 
-export function PlateEditor() {
-  const editor = useCreateEditor();
+type OnChange = React.ComponentProps<typeof Plate>['onChange'];
+
+export function PlateEditor({ initValueMarkdown, saveContent }: { initValueMarkdown?: string, saveContent: (content: string) => void }) {
+  const editor = useCreateEditor({
+    initValueMarkdown,
+  });
+
+  const onChange: OnChange = (options) => {
+    const savedValue = serializeEditorContent(options.editor);
+    saveContent(savedValue);
+  }
 
   return (
     <DndProvider backend={HTML5Backend}>
-      <Plate editor={editor}>
+      <Plate editor={editor} onChange={onChange}>
         <EditorContainer>
           <Editor variant="demo" />
         </EditorContainer>
 
-        <SettingsDialog />
+        {/* <SettingsDialog /> */}
       </Plate>
     </DndProvider>
   );

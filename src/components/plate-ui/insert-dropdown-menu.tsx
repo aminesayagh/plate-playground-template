@@ -7,7 +7,7 @@ import type { DropdownMenuProps } from '@radix-ui/react-dropdown-menu';
 import { BlockquotePlugin } from '@udecode/plate-block-quote/react';
 import { CodeBlockPlugin } from '@udecode/plate-code-block/react';
 import { DatePlugin } from '@udecode/plate-date/react';
-import { ExcalidrawPlugin } from '@udecode/plate-excalidraw/react';
+// import { ExcalidrawPlugin } from '@udecode/plate-excalidraw/react';
 import { HEADING_KEYS } from '@udecode/plate-heading';
 import { TocPlugin } from '@udecode/plate-heading/react';
 import { HorizontalRulePlugin } from '@udecode/plate-horizontal-rule/react';
@@ -17,7 +17,10 @@ import {
   EquationPlugin,
   InlineEquationPlugin,
 } from '@udecode/plate-math/react';
-import { ImagePlugin, MediaEmbedPlugin } from '@udecode/plate-media/react';
+import { 
+  ImagePlugin
+  // MediaEmbedPlugin 
+} from '@udecode/plate-media/react';
 import { TablePlugin } from '@udecode/plate-table/react';
 import { TogglePlugin } from '@udecode/plate-toggle/react';
 import {
@@ -30,7 +33,7 @@ import {
   ChevronRightIcon,
   Columns3Icon,
   FileCodeIcon,
-  FilmIcon,
+  // FilmIcon,
   Heading1Icon,
   Heading2Icon,
   Heading3Icon,
@@ -39,7 +42,7 @@ import {
   ListIcon,
   ListOrderedIcon,
   MinusIcon,
-  PenToolIcon,
+  // PenToolIcon,
   PilcrowIcon,
   PlusIcon,
   QuoteIcon,
@@ -166,16 +169,16 @@ const groups: Group[] = [
         label: 'Image',
         value: ImagePlugin.key,
       },
-      {
-        icon: <FilmIcon />,
-        label: 'Embed',
-        value: MediaEmbedPlugin.key,
-      },
-      {
-        icon: <PenToolIcon />,
-        label: 'Excalidraw',
-        value: ExcalidrawPlugin.key,
-      },
+      // {
+      //   icon: <FilmIcon />,
+      //   label: 'Embed',
+      //   value: MediaEmbedPlugin.key,
+      // },
+      // {
+      //   icon: <PenToolIcon />,
+      //   label: 'Excalidraw',
+      //   value: ExcalidrawPlugin.key,
+      // },
     ].map((item) => ({
       ...item,
       onSelect: (editor, value) => {

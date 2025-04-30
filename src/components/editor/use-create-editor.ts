@@ -74,7 +74,7 @@ import { CodeLineElement } from '@/components/plate-ui/code-line-element';
 import { CodeSyntaxLeaf } from '@/components/plate-ui/code-syntax-leaf';
 import { ColumnElement } from '@/components/plate-ui/column-element';
 import { ColumnGroupElement } from '@/components/plate-ui/column-group-element';
-import { CommentLeaf } from '@/components/plate-ui/comment-leaf';
+// import { CommentLeaf } from '@/components/plate-ui/comment-leaf';
 import { DateElement } from '@/components/plate-ui/date-element';
 import { EmojiInputElement } from '@/components/plate-ui/emoji-input-element';
 import { EquationElement } from '@/components/plate-ui/equation-element';
@@ -105,7 +105,7 @@ import { TableElement } from '@/components/plate-ui/table-element';
 import { TableRowElement } from '@/components/plate-ui/table-row-element';
 import { TocElement } from '@/components/plate-ui/toc-element';
 import { ToggleElement } from '@/components/plate-ui/toggle-element';
-
+import { MarkdownPlugin } from '@udecode/plate-markdown';
 export const viewComponents = {
   [AudioPlugin.key]: MediaAudioElement,
   [BlockquotePlugin.key]: BlockquoteElement,
@@ -116,7 +116,7 @@ export const viewComponents = {
   [CodeSyntaxPlugin.key]: CodeSyntaxLeaf,
   [ColumnItemPlugin.key]: ColumnElement,
   [ColumnPlugin.key]: ColumnGroupElement,
-  [CommentsPlugin.key]: CommentLeaf,
+  // [CommentsPlugin.key]: CommentLeaf,
   [DatePlugin.key]: DateElement,
   [EquationPlugin.key]: EquationElement,
   [ExcalidrawPlugin.key]: ExcalidrawElement,
@@ -162,17 +162,20 @@ export const editorComponents = {
 
 export const useCreateEditor = (
   {
+    initValueMarkdown,
     components,
     override,
     readOnly,
     ...options
   }: {
+    initValueMarkdown?: string;
     components?: Record<string, any>;
     plugins?: any[];
     readOnly?: boolean;
   } & Omit<CreatePlateEditorOptions, 'plugins'> = {},
   deps: any[] = []
 ) => {
+  
   return usePlateEditor<Value>(
     {
       override: {
@@ -188,22 +191,7 @@ export const useCreateEditor = (
         FixedToolbarPlugin,
         FloatingToolbarPlugin,
       ],
-      value: [
-        {
-          children: [{ text: 'Playground' }],
-          type: 'h1',
-        },
-        {
-          children: [
-            { text: 'A rich-text editor with AI capabilities. Try the ' },
-            { bold: true, text: 'AI commands' },
-            { text: ' or use ' },
-            { kbd: true, text: 'Cmd+J' },
-            { text: ' to open the AI menu.' },
-          ],
-          type: ParagraphPlugin.key,
-        },
-      ],
+      value: (editor) => editor.getApi(MarkdownPlugin).markdown.deserialize(initValueMarkdown ?? ''),
       ...options,
     },
     deps
