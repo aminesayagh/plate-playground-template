@@ -101,21 +101,21 @@ export function BlockContextMenu({ children }: { children: React.ReactNode }) {
             e.preventDefault();
             editor.getApi(BlockSelectionPlugin).blockSelection.focus();
 
-            if (value === 'askAI') {
-              editor.getApi(AIChatPlugin).aiChat.show();
-            }
+            // if (value === 'askAI') {
+            //   editor.getApi(AIChatPlugin).aiChat.show();
+            // }
 
             setValue(null);
           }}
         >
           <ContextMenuGroup>
-            <ContextMenuItem
+            {/* <ContextMenuItem
               onClick={() => {
                 setValue('askAI');
               }}
             >
               Ask AI
-            </ContextMenuItem>
+            </ContextMenuItem> */}
             <ContextMenuItem
               onClick={() => {
                 editor

@@ -16,7 +16,7 @@ import { PlateElement, useEditorPlugin, withHOC } from 'platejs/react';
 import { useFilePicker } from 'use-file-picker';
 
 import { cn } from '@/lib/utils';
-import { useUploadFile } from '@/hooks/use-upload-file';
+// import { useUploadFile } from '@/hooks/use-upload-file';
 
 const CONTENT: Record<
   string,
@@ -60,13 +60,13 @@ export const PlaceholderElement = withHOC(
     //   useUploadFile();
 
     // Mock values while upload is disabled
-    const isUploading = false;
+    // const isUploading = false;
     const progress = 0;
     const uploadedFile = null;
-    const uploadFile = () => Promise.resolve(null);
-    const uploadingFile = null;
+    // const uploadFile = () => Promise.resolve(null);
+    // const uploadingFile = null;
 
-    const loading = isUploading && uploadingFile;
+    // const loading = isUploading && uploadingFile;
 
     const currentContent = CONTENT[element.mediaType];
 
@@ -163,7 +163,7 @@ export const PlaceholderElement = withHOC(
 
     return (
       <PlateElement className="my-1" {...props}>
-        {(!loading || !isImage) && (
+        {/* {(!loading || !isImage) && (
           <div
             className={cn(
               'flex cursor-pointer items-center rounded-sm bg-muted p-3 pr-9 select-none hover:bg-primary/10'
@@ -191,15 +191,15 @@ export const PlaceholderElement = withHOC(
               )}
             </div>
           </div>
-        )}
+        )} */}
 
-        {isImage && loading && (
+        {/* {isImage && loading && (
           <ImageProgress
             file={uploadingFile}
             imageRef={imageRef}
             progress={progress}
           />
-        )}
+        )} */}
 
         {props.children}
       </PlateElement>

@@ -2,7 +2,7 @@
 
 import * as React from 'react';
 
-import { SuggestionPlugin } from '@platejs/suggestion/react';
+// import { SuggestionPlugin } from '@platejs/suggestion/react';
 import {
   type DropdownMenuProps,
   DropdownMenuItemIndicator,
@@ -25,13 +25,13 @@ export function ModeToolbarButton(props: DropdownMenuProps) {
   const [readOnly, setReadOnly] = usePlateState('readOnly');
   const [open, setOpen] = React.useState(false);
 
-  const isSuggesting = usePluginOption(SuggestionPlugin, 'isSuggesting');
+  // const isSuggesting = usePluginOption(SuggestionPlugin, 'isSuggesting');
 
   let value = 'editing';
 
   if (readOnly) value = 'viewing';
 
-  if (isSuggesting) value = 'suggestion';
+  // if (isSuggesting) value = 'suggestion';
 
   const item: Record<string, { icon: React.ReactNode; label: string }> = {
     editing: {
@@ -69,13 +69,13 @@ export function ModeToolbarButton(props: DropdownMenuProps) {
               setReadOnly(false);
             }
 
-            if (newValue === 'suggestion') {
-              editor.setOption(SuggestionPlugin, 'isSuggesting', true);
+            // if (newValue === 'suggestion') {
+            //   editor.setOption(SuggestionPlugin, 'isSuggesting', true);
 
-              return;
-            } else {
-              editor.setOption(SuggestionPlugin, 'isSuggesting', false);
-            }
+            //   return;
+            // } else {
+            //   editor.setOption(SuggestionPlugin, 'isSuggesting', false);
+            // }
 
             if (newValue === 'editing') {
               editor.tf.focus();
