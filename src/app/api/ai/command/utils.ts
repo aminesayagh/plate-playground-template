@@ -1,5 +1,5 @@
-import type { ChatMessage } from '@/components/editor/use-chat';
-import type { UIMessage } from 'ai';
+// import type { ChatMessage } from '@/components/editor/use-chat';
+// import type { UIMessage } from 'ai';
 
 import { getMarkdown } from '@platejs/ai';
 import { serializeMd } from '@platejs/markdown';
@@ -153,35 +153,35 @@ export const buildStructuredPrompt = ({
   ]);
 };
 
-export function getTextFromMessage(message: UIMessage): string {
-  return message.parts
-    .filter((part) => part.type === 'text')
-    .map((part) => part.text)
-    .join('');
-}
+// export function getTextFromMessage(message: UIMessage): string {
+//   return message.parts
+//     .filter((part) => part.type === 'text')
+//     .map((part) => part.text)
+//     .join('');
+// }
 
 /**
  * Format conversation history for prompts. Extracts text from messages and
  * formats as ROLE: text.
  */
-export function formatTextFromMessages(
-  messages: ChatMessage[],
-  options?: { limit?: number }
-): string {
-  const historyMessages = options?.limit
-    ? messages.slice(-options.limit)
-    : messages;
+// export function formatTextFromMessages(
+//   messages: ChatMessage[],
+//   options?: { limit?: number }
+// ): string {
+//   const historyMessages = options?.limit
+//     ? messages.slice(-options.limit)
+//     : messages;
 
-  return historyMessages
-    .map((message) => {
-      const text = getTextFromMessage(message).trim();
-      if (!text) return null;
-      const role = message.role.toUpperCase();
-      return `${role}: ${text}`;
-    })
-    .filter(Boolean)
-    .join('\n');
-}
+//   return historyMessages
+//     .map((message) => {
+//       const text = getTextFromMessage(message).trim();
+//       if (!text) return null;
+//       const role = message.role.toUpperCase();
+//       return `${role}: ${text}`;
+//     })
+//     .filter(Boolean)
+//     .join('\n');
+// }
 
 const SELECTION_START = '<Selection>';
 const SELECTION_END = '</Selection>';

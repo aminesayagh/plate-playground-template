@@ -12,12 +12,12 @@ import {
   PaintBucketIcon,
   StrikethroughIcon,
   UnderlineIcon,
-  WandSparklesIcon,
+  // WandSparklesIcon,
 } from 'lucide-react';
 import { KEYS } from 'platejs';
 import { useEditorReadOnly } from 'platejs/react';
 
-import { AIToolbarButton } from './ai-toolbar-button';
+// import { AIToolbarButton } from './ai-toolbar-button';
 import { AlignToolbarButton } from './align-toolbar-button';
 import { CommentToolbarButton } from './comment-toolbar-button';
 import { EmojiToolbarButton } from './emoji-toolbar-button';
@@ -60,9 +60,9 @@ export function FixedToolbarButtons() {
           </ToolbarGroup>
 
           <ToolbarGroup>
-            <AIToolbarButton tooltip="AI commands">
+            {/* <AIToolbarButton tooltip="AI commands">
               <WandSparklesIcon />
-            </AIToolbarButton>
+            </AIToolbarButton> */}
           </ToolbarGroup>
 
           {/* EXPORT/IMPORT FEATURES DISABLED - Comment out toolbar group */}
@@ -135,10 +135,10 @@ export function FixedToolbarButtons() {
           </ToolbarGroup>
 
           <ToolbarGroup>
-            <MediaToolbarButton nodeType={KEYS.img} />
+            {/* <MediaToolbarButton nodeType={KEYS.img} />
             <MediaToolbarButton nodeType={KEYS.video} />
             <MediaToolbarButton nodeType={KEYS.audio} />
-            <MediaToolbarButton nodeType={KEYS.file} />
+            <MediaToolbarButton nodeType={KEYS.file} /> */}
           </ToolbarGroup>
 
           <ToolbarGroup>
@@ -159,7 +159,8 @@ export function FixedToolbarButtons() {
         <MarkToolbarButton nodeType={KEYS.highlight} tooltip="Highlight">
           <HighlighterIcon />
         </MarkToolbarButton>
-        <CommentToolbarButton />
+        {/* COMMENT FEATURE DISABLED - Comment out comment toolbar button */}
+        {/* <CommentToolbarButton /> */}
       </ToolbarGroup>
 
       <ToolbarGroup>

@@ -10,7 +10,7 @@ import {
 import { isSlateString } from 'platejs';
 import { toTPlatePlugin } from 'platejs/react';
 
-import { CommentLeaf } from '@/components/ui/comment-node';
+// import { CommentLeaf } from '@/components/ui/comment-node';
 
 type CommentConfig = ExtendConfig<
   BaseCommentConfig,
@@ -88,7 +88,7 @@ export const commentPlugin = toTPlatePlugin<CommentConfig>(BaseCommentPlugin, {
     })
   )
   .configure({
-    node: { component: CommentLeaf },
+    // node: { component: CommentLeaf },
     shortcuts: {
       setDraft: { keys: 'mod+shift+m' },
     },

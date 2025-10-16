@@ -9,7 +9,12 @@ import { commentPlugin } from '@/components/editor/plugins/comment-kit';
 
 import { ToolbarButton } from './toolbar';
 
+// COMMENT FEATURE DISABLED - Comment out toolbar button functionality
 export function CommentToolbarButton() {
+  // COMMENT FEATURE DISABLED - Return null to hide the component entirely
+  return null;
+
+  /* ORIGINAL COMMENT TOOLBAR BUTTON - COMMENTED OUT
   const editor = useEditorRef();
 
   return (
@@ -23,4 +28,5 @@ export function CommentToolbarButton() {
       <MessageSquareTextIcon />
     </ToolbarButton>
   );
+  */
 }
