@@ -87,13 +87,19 @@ export function MediaToolbarButton({
   const [open, setOpen] = React.useState(false);
   const [dialogOpen, setDialogOpen] = React.useState(false);
 
-  const { openFilePicker } = useFilePicker({
-    accept: currentConfig.accept,
-    multiple: true,
-    onFilesSelected: ({ plainFiles: updatedFiles }) => {
-      editor.getTransforms(PlaceholderPlugin).insert.media(updatedFiles);
-    },
-  });
+  // UPLOAD FEATURE DISABLED - Comment out file picker functionality
+  // const { openFilePicker } = useFilePicker({
+  //   accept: currentConfig.accept,
+  //   multiple: true,
+  //   onFilesSelected: ({ plainFiles: updatedFiles }) => {
+  //     editor.getTransforms(PlaceholderPlugin).insert.media(updatedFiles);
+  //   },
+  // });
+
+  // Temporary placeholder function while upload is disabled
+  const openFilePicker = () => {
+    toast.error('Upload functionality is currently disabled');
+  };
 
   return (
     <>
@@ -129,10 +135,11 @@ export function MediaToolbarButton({
             alignOffset={-32}
           >
             <DropdownMenuGroup>
-              <DropdownMenuItem onSelect={() => openFilePicker()}>
+              {/* UPLOAD FEATURE DISABLED - Comment out upload option */}
+              {/* <DropdownMenuItem onSelect={() => openFilePicker()}>
                 {currentConfig.icon}
                 Upload from computer
-              </DropdownMenuItem>
+              </DropdownMenuItem> */}
               <DropdownMenuItem onSelect={() => setDialogOpen(true)}>
                 <LinkIcon />
                 Insert via URL

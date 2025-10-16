@@ -21,16 +21,35 @@ interface UseUploadFileProps
   onUploadError?: (error: unknown) => void;
 }
 
+// UPLOAD FEATURE DISABLED - Comment out the entire upload hook
 export function useUploadFile({
   onUploadComplete,
   onUploadError,
   ...props
 }: UseUploadFileProps = {}) {
+  // Return mock values while upload is disabled
   const [uploadedFile, setUploadedFile] = React.useState<UploadedFile>();
   const [uploadingFile, setUploadingFile] = React.useState<File>();
   const [progress, setProgress] = React.useState<number>(0);
   const [isUploading, setIsUploading] = React.useState(false);
 
+  // Mock upload function that does nothing
+  async function uploadThing(file: File) {
+    console.warn('Upload functionality is currently disabled for:', file.name);
+    toast.error('Upload functionality is currently disabled');
+    onUploadError?.(new Error('Upload disabled'));
+    return null;
+  }
+
+  return {
+    isUploading: false,
+    progress: 0,
+    uploadedFile: undefined,
+    uploadFile: uploadThing,
+    uploadingFile: undefined,
+  };
+
+  /* ORIGINAL UPLOAD IMPLEMENTATION - COMMENTED OUT
   async function uploadThing(file: File) {
     setIsUploading(true);
     setUploadingFile(file);
@@ -102,6 +121,7 @@ export function useUploadFile({
     uploadFile: uploadThing,
     uploadingFile,
   };
+  */
 }
 
 export const { uploadFiles, useUploadThing } =

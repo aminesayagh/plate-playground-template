@@ -1,0 +1,6 @@
+{
+  "enabledMcpjsonServers": [
+    "plate"
+  ],
+  "enableAllProjectMcpServers": true
+}

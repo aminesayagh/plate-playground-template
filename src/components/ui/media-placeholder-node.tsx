@@ -55,8 +55,16 @@ export const PlaceholderElement = withHOC(
 
     const { api } = useEditorPlugin(PlaceholderPlugin);
 
-    const { isUploading, progress, uploadedFile, uploadFile, uploadingFile } =
-      useUploadFile();
+    // UPLOAD FEATURE DISABLED - Comment out upload hook
+    // const { isUploading, progress, uploadedFile, uploadFile, uploadingFile } =
+    //   useUploadFile();
+
+    // Mock values while upload is disabled
+    const isUploading = false;
+    const progress = 0;
+    const uploadedFile = null;
+    const uploadFile = () => Promise.resolve(null);
+    const uploadingFile = null;
 
     const loading = isUploading && uploadingFile;
 
@@ -66,75 +74,92 @@ export const PlaceholderElement = withHOC(
 
     const imageRef = React.useRef<HTMLImageElement>(null);
 
-    const { openFilePicker } = useFilePicker({
-      accept: currentContent.accept,
-      multiple: true,
-      onFilesSelected: ({ plainFiles: updatedFiles }) => {
-        const firstFile = updatedFiles[0];
-        const restFiles = updatedFiles.slice(1);
+    // UPLOAD FEATURE DISABLED - Comment out file picker
+    // const { openFilePicker } = useFilePicker({
+    //   accept: currentContent.accept,
+    //   multiple: true,
+    //   onFilesSelected: ({ plainFiles: updatedFiles }) => {
+    //     const firstFile = updatedFiles[0];
+    //     const restFiles = updatedFiles.slice(1);
 
-        replaceCurrentPlaceholder(firstFile);
+    //     replaceCurrentPlaceholder(firstFile);
 
-        if (restFiles.length > 0) {
-          editor.getTransforms(PlaceholderPlugin).insert.media(restFiles);
-        }
-      },
-    });
+    //     if (restFiles.length > 0) {
+    //       editor.getTransforms(PlaceholderPlugin).insert.media(restFiles);
+    //     }
+    //   },
+    // });
 
+    // Mock file picker while upload is disabled
+    const openFilePicker = () => {
+      console.warn('Upload functionality is currently disabled');
+    };
+
+    // UPLOAD FEATURE DISABLED - Comment out placeholder replacement
+    // const replaceCurrentPlaceholder = React.useCallback(
+    //   (file: File) => {
+    //     void uploadFile(file);
+    //     api.placeholder.addUploadingFile(element.id as string, file);
+    //   },
+    //   [api.placeholder, element.id, uploadFile]
+    // );
+
+    // Mock function while upload is disabled
     const replaceCurrentPlaceholder = React.useCallback(
       (file: File) => {
-        void uploadFile(file);
-        api.placeholder.addUploadingFile(element.id as string, file);
+        console.warn('Upload functionality is currently disabled for:', file.name);
       },
-      [api.placeholder, element.id, uploadFile]
+      []
     );
 
-    React.useEffect(() => {
-      if (!uploadedFile) return;
+    // UPLOAD FEATURE DISABLED - Comment out upload completion effect
+    // React.useEffect(() => {
+    //   if (!uploadedFile) return;
 
-      const path = editor.api.findPath(element);
+    //   const path = editor.api.findPath(element);
 
-      editor.tf.withoutSaving(() => {
-        editor.tf.removeNodes({ at: path });
+    //   editor.tf.withoutSaving(() => {
+    //     editor.tf.removeNodes({ at: path });
 
-        const node = {
-          children: [{ text: '' }],
-          initialHeight: imageRef.current?.height,
-          initialWidth: imageRef.current?.width,
-          isUpload: true,
-          name: element.mediaType === KEYS.file ? uploadedFile.name : '',
-          placeholderId: element.id as string,
-          type: element.mediaType!,
-          url: uploadedFile.url,
-        };
+    //     const node = {
+    //       children: [{ text: '' }],
+    //       initialHeight: imageRef.current?.height,
+    //       initialWidth: imageRef.current?.width,
+    //       isUpload: true,
+    //       name: element.mediaType === KEYS.file ? uploadedFile.name : '',
+    //       placeholderId: element.id as string,
+    //       type: element.mediaType!,
+    //       url: uploadedFile.url,
+    //     };
 
-        editor.tf.insertNodes(node, { at: path });
+    //     editor.tf.insertNodes(node, { at: path });
 
-        updateUploadHistory(editor, node);
-      });
+    //     updateUploadHistory(editor, node);
+    //   });
 
-      api.placeholder.removeUploadingFile(element.id as string);
-      // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [uploadedFile, element.id]);
+    //   api.placeholder.removeUploadingFile(element.id as string);
+    //   // eslint-disable-next-line react-hooks/exhaustive-deps
+    // }, [uploadedFile, element.id]);
 
     // React dev mode will call React.useEffect twice
     const isReplaced = React.useRef(false);
 
-    /** Paste and drop */
-    React.useEffect(() => {
-      if (isReplaced.current) return;
+    // UPLOAD FEATURE DISABLED - Comment out paste and drop effect
+    // /** Paste and drop */
+    // React.useEffect(() => {
+    //   if (isReplaced.current) return;
 
-      isReplaced.current = true;
-      const currentFiles = api.placeholder.getUploadingFile(
-        element.id as string
-      );
+    //   isReplaced.current = true;
+    //   const currentFiles = api.placeholder.getUploadingFile(
+    //     element.id as string
+    //   );
 
-      if (!currentFiles) return;
+    //   if (!currentFiles) return;
 
-      replaceCurrentPlaceholder(currentFiles);
+    //   replaceCurrentPlaceholder(currentFiles);
 
-      // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [isReplaced]);
+    //   // eslint-disable-next-line react-hooks/exhaustive-deps
+    // }, [isReplaced]);
 
     return (
       <PlateElement className="my-1" {...props}>

@@ -20,17 +20,25 @@ import { MediaPreviewDialog } from '@/components/ui/media-preview-dialog';
 import { MediaUploadToast } from '@/components/ui/media-upload-toast';
 import { VideoElement } from '@/components/ui/media-video-node';
 
+// UPLOAD FEATURE DISABLED - Modified media kit to disable upload features
 export const MediaKit = [
   ImagePlugin.configure({
-    options: { disableUploadInsert: true },
+    options: { 
+      disableUploadInsert: true, // Already disabled upload insert
+      // UPLOAD FEATURE DISABLED - Additional upload restrictions could be added here
+    },
     render: { afterEditable: MediaPreviewDialog, node: ImageElement },
   }),
   MediaEmbedPlugin.withComponent(MediaEmbedElement),
   VideoPlugin.withComponent(VideoElement),
   AudioPlugin.withComponent(AudioElement),
   FilePlugin.withComponent(FileElement),
+  // UPLOAD FEATURE DISABLED - Keep placeholder plugin but upload functionality is disabled in components
   PlaceholderPlugin.configure({
-    options: { disableEmptyPlaceholder: true },
+    options: { 
+      disableEmptyPlaceholder: true,
+      // Note: Upload functionality disabled in PlaceholderElement component
+    },
     render: { afterEditable: MediaUploadToast, node: PlaceholderElement },
   }),
   CaptionPlugin.configure({
