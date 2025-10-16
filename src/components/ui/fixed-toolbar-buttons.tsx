@@ -65,13 +65,14 @@ export function FixedToolbarButtons() {
             </AIToolbarButton>
           </ToolbarGroup>
 
-          <ToolbarGroup>
+          {/* EXPORT/IMPORT FEATURES DISABLED - Comment out toolbar group */}
+          {/* <ToolbarGroup>
             <ExportToolbarButton>
               <ArrowUpToLineIcon />
             </ExportToolbarButton>
 
             <ImportToolbarButton />
-          </ToolbarGroup>
+          </ToolbarGroup> */}
 
           <ToolbarGroup>
             <InsertToolbarButton />

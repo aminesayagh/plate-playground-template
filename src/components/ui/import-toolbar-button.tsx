@@ -22,7 +22,12 @@ import { ToolbarButton } from './toolbar';
 
 type ImportType = 'html' | 'markdown';
 
+// IMPORT FEATURE DISABLED - Comment out all import functionality
 export function ImportToolbarButton(props: DropdownMenuProps) {
+  // IMPORT FEATURE DISABLED - Return null to hide the component entirely
+  return null;
+
+  /* ORIGINAL IMPORT COMPONENT - COMMENTED OUT
   const editor = useEditorRef();
   const [open, setOpen] = React.useState(false);
 
@@ -96,4 +101,5 @@ export function ImportToolbarButton(props: DropdownMenuProps) {
       </DropdownMenuContent>
     </DropdownMenu>
   );
+  */
 }

@@ -80,9 +80,10 @@ export const EditorKit = [
   ...ExitBreakKit,
   TrailingBlockPlugin,
 
+  // IMPORT/EXPORT FEATURES DISABLED - Comment out DOCX parser (Markdown kept for core functionality)
   // Parsers
-  ...DocxKit,
-  ...MarkdownKit,
+  // ...DocxKit, // DISABLED - DOCX import/export functionality
+  ...MarkdownKit, // KEPT - Provides core markdown features beyond import/export
 
   // UI
   ...BlockPlaceholderKit,
